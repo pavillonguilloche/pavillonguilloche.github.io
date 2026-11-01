@@ -241,12 +241,15 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .dossier .close{position:absolute;top:14px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--paper-2);cursor:pointer;color:var(--ink);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
 .dossier .close:hover{background:var(--ink);color:var(--paper);transform:rotate(90deg)}
 @media (max-width:860px){
-  .dossier .pin{grid-template-columns:1fr;grid-template-rows:44svh 1fr;height:100svh}
-  .dossier .dmedal{border-right:0;border-bottom:1px solid var(--line)}
-  .dossier .dmedal canvas{width:min(78%,40svh);height:min(78%,40svh)}
-  .dossier .bezel{width:min(80%,42svh);height:min(80%,42svh)}
-  .dossier .ringtxt{bottom:14px}
-  .dossier .dbody{justify-content:flex-start;padding:32px 22px 72px}
+  .dossier .pin{display:block;grid-template-columns:none;height:100svh;max-height:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .dossier .dmedal{height:46svh;min-height:300px;aspect-ratio:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .dossier .dmedal canvas{width:min(80%,42svh);height:min(80%,42svh)}
+  .dossier .bezel{width:min(82%,44svh);height:min(82%,44svh)}
+  .dossier .ringtxt{bottom:12px}
+  .dossier .dbody{display:block;overflow:visible;max-width:none;padding:30px 22px 48px}
+  .dossier .close{top:12px;right:12px}
+  .dossier .dtoggle{top:14px;left:14px}
+  .dossier h3{font-size:clamp(2rem,8vw,2.6rem)}
 }
 
 /* ---------- LA VENTE ---------- */
@@ -267,6 +270,11 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .cCoords{display:flex;flex-wrap:wrap;gap:16px 56px;margin-top:42px}
 .cItem .k{font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:#a89c84}
 .cItem .v{font-family:var(--serif);font-size:1.4rem;color:var(--paper);margin-top:7px;display:block}
+.closing .iglink{display:block;width:fit-content;margin-top:7px;color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(240,232,216,.32);padding-bottom:2px;transition:color .3s,border-color .3s}
+.closing .iglink:hover{color:var(--gold-2);border-color:var(--gold-2)}
+.closing .igcta{display:inline-flex;align-items:center;gap:11px;margin-top:38px;font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold-2);padding:17px 28px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
+.closing .igcta:hover{background:#d8b878;transform:translateY(-2px)}
+.closing .igcta svg{flex:none}
 .cBar{display:flex;justify-content:space-between;gap:30px 48px;flex-wrap:wrap;margin-top:clamp(60px,10vw,110px);padding-top:30px;border-top:1px solid rgba(240,232,216,.14)}
 .cBar .wm{font-family:var(--serif);font-weight:600;font-size:1.3rem;white-space:nowrap}
 .cBar .wm span{display:block;font-family:var(--sans);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:#a89c84;margin-top:9px}
@@ -280,10 +288,6 @@ footer{border-top:1px solid var(--line);padding-block:48px}
   .terms{grid-template-columns:1fr;gap:26px}
   .conditions{grid-template-columns:1fr;gap:22px}
   .nocturne .dialWrap{width:min(60vh,440px);height:min(60vh,440px);right:-16%;opacity:.8}
-  .dossier .pin{grid-template-columns:1fr}
-  .dossier .dmedal{aspect-ratio:3/2;border-right:0;border-bottom:1px solid var(--line)}
-  .dossier .dmedal canvas{width:46%;height:auto}
-  .dossier .panel{max-height:88svh}
 }
 @media(max-width:680px){
   .nav .links a:not(.cta){display:none}
@@ -294,8 +298,11 @@ footer{border-top:1px solid var(--line);padding-block:48px}
   .nocturne .dialWrap{opacity:.35;right:-28%}
   .closing canvas{opacity:.1}
   .cBar{flex-direction:column}
+  .steps{grid-template-columns:1fr}
+  .maisonHead{flex-direction:column;align-items:flex-start;gap:8px}
+  .closing .igcta{width:100%;justify-content:center}
 }
-@media(max-width:430px){ .grid{grid-template-columns:1fr} }
+@media(max-width:540px){ .grid{grid-template-columns:1fr} }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .reveal{opacity:1!important;transform:none!important}
@@ -404,9 +411,10 @@ footer{border-top:1px solid var(--line);padding-block:48px}
       <h2>Écrivez-nous<br><span class="it">en message privé.</span></h2>
       <p class="clede">Dites-nous le modèle recherché. Nous revenons avec la disponibilité et le prix.</p>
       <div class="cCoords">
-        <div class="cItem"><span class="k">Message privé</span><span class="v">Instagram&nbsp;·&nbsp;à&nbsp;venir</span></div>
+        <div class="cItem"><span class="k">Message privé</span><a class="v iglink" href="https://instagram.com/nael_elior" target="_blank" rel="noopener">@nael_elior</a></div>
         <div class="cItem"><span class="k">Par présentation</span><span class="v">Via votre intermédiaire</span></div>
       </div>
+      <a class="igcta" href="https://instagram.com/nael_elior" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>Écrire sur Instagram</a>
     </div>
     <div class="cBar">
       <div class="wm">Pavillon Guilloché<span>Paris · Courtage horloger</span></div>
