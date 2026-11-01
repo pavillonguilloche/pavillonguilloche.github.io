@@ -241,12 +241,12 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .dossier .close{position:absolute;top:14px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--paper-2);cursor:pointer;color:var(--ink);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
 .dossier .close:hover{background:var(--ink);color:var(--paper);transform:rotate(90deg)}
 @media (max-width:860px){
-  .dossier .pin{display:block;grid-template-columns:none;height:100svh;max-height:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  .dossier .dmedal{height:46svh;min-height:300px;aspect-ratio:auto;border-right:0;border-bottom:1px solid var(--line)}
-  .dossier .dmedal canvas{width:min(80%,42svh);height:min(80%,42svh)}
-  .dossier .bezel{width:min(82%,44svh);height:min(82%,44svh)}
+  .dossier .pin{display:flex;flex-direction:column;grid-template-columns:none;height:100svh;max-height:none;overflow:hidden}
+  .dossier .dmedal{flex:0 0 52svh;aspect-ratio:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .dossier .dmedal canvas{width:min(82%,46svh);height:min(82%,46svh)}
+  .dossier .bezel{width:min(84%,48svh);height:min(84%,48svh)}
   .dossier .ringtxt{bottom:12px}
-  .dossier .dbody{display:block;overflow:visible;max-width:none;padding:30px 22px 48px}
+  .dossier .dbody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:none;padding:28px 24px 40px}
   .dossier .close{top:12px;right:12px}
   .dossier .dtoggle{top:14px;left:14px}
   .dossier h3{font-size:clamp(2rem,8vw,2.6rem)}
@@ -607,22 +607,22 @@ function coverSkeleton(cv,seed){
 
 /* ---------- DATA ---------- */
 const MAISONS=[
- {name:"Rolex",philo:"La référence absolue. Liquidité, reconnaissance, désir universel.",pieces:[
-   {n:"Panda",t:"Cosmograph Daytona",ref:"Réf. 126500LN",d:"L'icône absolue du chronographe. Cadran blanc, compteurs noirs.",s:["40 mm","Oystersteel","Bracelet Oyster"],note:"Cadran noir sur demande.",img:"img/daytona.jpg"},
-   {n:"Batman",t:"GMT-Master II",ref:"Réf. 126710BLNR",d:"L'icône du voyage, lunette céramique bleu nuit et noir.",s:["40 mm","Oystersteel","Jubilé / Oyster"],note:"Autres lunettes (Pepsi, GRNR) sur demande.",img:"img/gmt.jpg"},
-   {n:"Bleu Glacier",t:"Day-Date 40",ref:"Réf. 228206",d:"Cadran bleu glacier, réservé au platine. Le Day-Date dans sa forme la plus convoitée.",s:["40 mm","Platine 950","Président"],note:"Or jaune, Everose et autres cadrans sur demande.",img:"img/daydate.jpg"},
+ {name:"Rolex",philo:"La référence du marché : reconnue au premier regard, revendue sans effort.",pieces:[
+   {n:"Panda",t:"Cosmograph Daytona",ref:"Réf. 126500LN",d:"Chronographe à cadran blanc laqué et compteurs noirs, lunette céramique. La configuration Panda, celle qu'on attend des mois.",s:["40 mm","Oystersteel","Bracelet Oyster"],note:"Cadran noir sur demande.",img:"img/daytona.jpg"},
+   {n:"Batman",t:"GMT-Master II",ref:"Réf. 126710BLNR",d:"Deux fuseaux horaires d'un coup d'œil, lunette céramique bleu nuit et noir. C'est de là que lui vient son surnom.",s:["40 mm","Oystersteel","Jubilé / Oyster"],note:"Autres lunettes (Pepsi, GRNR) sur demande.",img:"img/gmt.jpg"},
+   {n:"Bleu Glacier",t:"Day-Date 40",ref:"Réf. 228206",d:"Bleu glacier, une teinte que Rolex réserve au platine. Bracelet Président : la Day-Date dans sa version la plus rare.",s:["40 mm","Platine 950","Président"],note:"Or jaune, Everose et autres cadrans sur demande.",img:"img/daydate.jpg"},
  ]},
- {name:"Cartier",philo:"La joaillerie au poignet. Formes iconiques, élégance unisexe.",pieces:[
-   {n:"",t:"Santos de Cartier",ref:"Grand Modèle",d:"L'icône sport-chic née en 1904 : vis apparentes, bracelet interchangeable.",s:["39,8 mm","Acier / or","Interchangeable"],note:"",img:"img/santos.jpg"},
-   {n:"Squelette",t:"Santos de Cartier Skeleton",ref:"Réf. WHSA0015",d:"Le mouvement mis à nu : les ponts ajourés dessinent les chiffres romains. Remontage manuel, 72 h de réserve.",s:["39,8 mm","Acier","Calibre 9611 MC","Interchangeable"],note:"Or et versions ADLC sur demande.",skel:true,img:"img/santos-skeleton.jpg"},
-   {n:"",t:"Tank Louis Cartier",ref:"Or · cuir",d:"Le classique habillé par excellence. Discret, éternel.",s:["Or 18 ct","Cuir","Automatique"],note:"Tank Américaine & Must sur demande.",img:"img/tank.jpg"},
+ {name:"Cartier",philo:"L'horlogerie dessinée par un joaillier. Des formes qui ont traversé le siècle.",pieces:[
+   {n:"",t:"Santos de Cartier",ref:"Grand Modèle",d:"Née en 1904 pour l'aviation, portée en ville depuis. Vis apparentes, bracelet changé sans outil.",s:["39,8 mm","Acier / or","Interchangeable"],note:"",img:"img/santos.jpg"},
+   {n:"Squelette",t:"Santos de Cartier Skeleton",ref:"Réf. WHSA0015",d:"Le mouvement à nu, ses ponts taillés en chiffres romains. Remontage manuel, 72 h de réserve.",s:["39,8 mm","Acier","Calibre 9611 MC","Interchangeable"],note:"Or et versions ADLC sur demande.",skel:true,img:"img/santos-skeleton.jpg"},
+   {n:"",t:"Tank Louis Cartier",ref:"Or · cuir",d:"Dessinée par Louis Cartier en 1917. Boîtier or, cadran chemin de fer : l'habillée dans sa forme la plus pure.",s:["Or 18 ct","Cuir","Automatique"],note:"Tank Américaine & Must sur demande.",img:"img/tank.jpg"},
  ]},
- {name:"Audemars Piguet",philo:"Le graal du sport-chic. Le bracelet intégré qui a redéfini le luxe en 1972.",pieces:[
-   {n:"",t:"Royal Oak Selfwinding",ref:"Réf. 15510ST",d:"L'icône absolue au poignet : lunette octogonale et cadran « Grande Tapisserie » bleu.",s:["41 mm","Acier","Bracelet intégré"],note:"Extra-Thin « Jumbo » et modèle 37 mm sur demande.",img:"img/royaloak.jpg"},
+ {name:"Audemars Piguet",philo:"1972 : Gérald Genta dessine la Royal Oak et fait de l'acier un objet de luxe.",pieces:[
+   {n:"",t:"Royal Oak Selfwinding",ref:"Réf. 15510ST",d:"Lunette octogonale, huit vis, cadran Grande Tapisserie bleu. Le dessin de Genta qui a tout changé.",s:["41 mm","Acier","Bracelet intégré"],note:"Extra-Thin « Jumbo » et modèle 37 mm sur demande.",img:"img/royaloak.jpg"},
  ]},
- {name:"Patek Philippe",philo:"Le sommet de la haute horlogerie, la cote de référence.",pieces:[
-   {n:"",t:"Nautilus",ref:"Réf. 5811/1G",d:"Le graal absolu du sport-chic, hublot horizontal, cadran bleu dégradé.",s:["41 mm","Or blanc","Bracelet intégré"],note:"",img:"img/nautilus.jpg"},
-   {n:"",t:"Aquanaut",ref:"Réf. 5167A",d:"Le sport-chic plus jeune et décontracté, bracelet composite kaki.",s:["40 mm","Acier","Composite"],note:"",img:"img/aquanaut.jpg"},
+ {name:"Patek Philippe",philo:"Le sommet de la haute horlogerie. Les records en salle des ventes le rappellent.",pieces:[
+   {n:"",t:"Nautilus",ref:"Réf. 5811/1G",d:"La silhouette de hublot signée Genta, en or blanc. Cadran bleu dégradé, bracelet intégré.",s:["41 mm","Or blanc","Bracelet intégré"],note:"",img:"img/nautilus.jpg"},
+   {n:"",t:"Aquanaut",ref:"Réf. 5167A",d:"La Patek décontractée : boîtier coussin, cadran grené, bracelet composite. Plus jeune que la Nautilus, tout aussi rare.",s:["40 mm","Acier","Composite"],note:"",img:"img/aquanaut.jpg"},
  ]},
 ];
 const GCOL=(getComputedStyle(document.documentElement).getPropertyValue('--guilloche')||'#B4A88F').trim();
