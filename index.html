@@ -528,7 +528,7 @@ footer{border-top:1px solid var(--line);padding-block:48px}
       <div class="ffield"><label for="fModele">Marque et modèle recherchés <span class="req">*</span></label><input id="fModele" name="modele" type="text" placeholder="Ex. Rolex Cosmograph Daytona"></div>
       <div class="frow">
         <div class="ffield"><label for="fRef">Référence</label><input id="fRef" name="reference" type="text" placeholder="Ex. 126500LN"></div>
-        <div class="ffield"><label for="fBudget">Budget en euros</label><input id="fBudget" name="budget" type="text" inputmode="numeric" placeholder="25000"></div>
+        <div class="ffield"><label for="fBudget">Budget en euros <span class="req">*</span></label><input id="fBudget" name="budget" type="text" inputmode="numeric" placeholder="25000"></div>
       </div>
       <div class="frow">
         <div class="ffield"><label for="fSource">Comment nous avez-vous connu ?</label><select id="fSource" name="source"><option value="">Choisir</option><option>Intermédiaire</option><option>Proche</option><option>Réseaux sociaux</option><option>Recherche en ligne</option><option>Autre</option></select></div>
@@ -845,7 +845,7 @@ if(fBudget)fBudget.addEventListener('input',()=>{fBudget.value=fBudget.value.rep
 if(demandeForm)demandeForm.addEventListener('submit',e=>{
   e.preventDefault();
   let ok=true;
-  [['fPrenom',0],['fNom',0],['fEmail',1],['fModele',0]].forEach(([id,isMail])=>{
+  [['fPrenom',0],['fNom',0],['fEmail',1],['fModele',0],['fBudget',0]].forEach(([id,isMail])=>{
     const el=document.getElementById(id); if(!el)return;
     const v=el.value.trim();
     const bad=!v||(isMail&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
