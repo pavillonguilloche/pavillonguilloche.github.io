@@ -351,6 +351,8 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .fmodal .fsubmit{appearance:none;cursor:pointer;border:0;width:100%;margin-top:28px;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:18px 28px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
 .fmodal .fsubmit:hover{background:var(--gold);transform:translateY(-2px)}
 .fmodal .fpledge{font-size:.72rem;line-height:1.6;color:var(--muted);margin-top:18px;text-align:center}
+.fmodal .ferr{color:#a8502f;font-size:.82rem;line-height:1.5;margin-top:14px;text-align:center}
+.fmodal .fsubmit:disabled{opacity:.65;cursor:default;transform:none}
 .fmodal .fdone{text-align:center;padding:14px 0}
 .fmodal .fcheck{width:60px;height:60px;border-radius:50%;border:1px solid var(--gold-2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:26px;margin:4px auto 22px}
 .fmodal .fdone h3{font-family:var(--serif);font-weight:500;font-size:1.9rem}
@@ -517,6 +519,7 @@ footer{border-top:1px solid var(--line);padding-block:48px}
       <p class="fsub">Réponse sous 24 à 48 heures.</p>
     </div>
     <form id="demandeForm" novalidate>
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="frow">
         <div class="ffield"><label for="fPrenom">Prénom <span class="req">*</span></label><input id="fPrenom" name="prenom" type="text" autocomplete="given-name" placeholder="Votre prénom"></div>
         <div class="ffield"><label for="fNom">Nom <span class="req">*</span></label><input id="fNom" name="nom" type="text" autocomplete="family-name" placeholder="Votre nom"></div>
@@ -536,6 +539,7 @@ footer{border-top:1px solid var(--line);padding-block:48px}
       </div>
       <div class="ffield"><label for="fNotes">Précisions</label><textarea id="fNotes" name="precisions" rows="2" placeholder="Millésime, état, full set, délai souhaité..."></textarea></div>
       <button type="submit" class="fsubmit">Envoyer ma demande</button>
+      <p class="ferr" id="fErr" role="alert"></p>
       <p class="fpledge">Aucune revente, aucune diffusion.</p>
     </form>
     <div class="fdone" hidden>
@@ -842,7 +846,7 @@ fmodal.addEventListener('click',e=>{if(e.target.hasAttribute('data-fclose'))clos
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fmodal.classList.contains('in'))closeForm();});
 const fBudget=document.getElementById('fBudget');
 if(fBudget)fBudget.addEventListener('input',()=>{fBudget.value=fBudget.value.replace(/[^0-9]/g,'');});
-if(demandeForm)demandeForm.addEventListener('submit',e=>{
+if(demandeForm)demandeForm.addEventListener('submit',async e=>{
   e.preventDefault();
   let ok=true;
   [['fPrenom',0],['fNom',0],['fEmail',1],['fModele',0],['fBudget',0]].forEach(([id,isMail])=>{
@@ -852,11 +856,26 @@ if(demandeForm)demandeForm.addEventListener('submit',e=>{
     el.classList.toggle('err',bad); if(bad)ok=false;
   });
   if(!ok){const first=demandeForm.querySelector('.err'); if(first)first.focus(); return;}
-  /* Envoi a brancher sur l'email de reception (service type Web3Forms/Formspree). */
-  demandeForm.style.display='none';
-  const done=fmodal.querySelector('.fdone'); if(done)done.hidden=false;
-  const panel=fmodal.querySelector('.fpanel'); if(panel)panel.scrollTop=0;
-  demandeForm.reset();
+  const btn=demandeForm.querySelector('.fsubmit'), lbl=btn?btn.textContent:'';
+  const errEl=document.getElementById('fErr'); if(errEl)errEl.textContent='';
+  if(btn){btn.disabled=true; btn.textContent='Envoi...';}
+  try{
+    const fd=new FormData(demandeForm);
+    fd.append('access_key','17aad5ec-4409-4c21-9d26-7c61348fb58e');
+    const modele=(document.getElementById('fModele').value||'').trim();
+    fd.append('subject','Nouvelle demande · '+(modele||'Pavillon Guilloché'));
+    fd.append('from_name','Pavillon Guilloché');
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:fd});
+    const data=await res.json();
+    if(!data.success)throw new Error(data.message||'echec');
+    demandeForm.style.display='none';
+    const done=fmodal.querySelector('.fdone'); if(done)done.hidden=false;
+    const panel=fmodal.querySelector('.fpanel'); if(panel)panel.scrollTop=0;
+    demandeForm.reset();
+  }catch(err){
+    if(btn){btn.disabled=false; btn.textContent=lbl;}
+    if(errEl)errEl.textContent="Envoi impossible pour le moment. Réessayez dans un instant.";
+  }
 });
 demandeForm&&demandeForm.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>el.classList.remove('err')));
 document.querySelectorAll('[data-form-open]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openForm();}));
