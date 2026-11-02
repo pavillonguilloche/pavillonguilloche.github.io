@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pavillon Guilloché</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,13 +201,13 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .dossier.open{display:block}
 .dossier .scrim{position:absolute;inset:0;background:rgba(28,22,13,.5);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;transition:opacity .45s}
 .dossier.in .scrim{opacity:1}
-.dossier .panel{position:absolute;top:50%;left:50%;width:min(960px,calc(100% - 44px));height:min(84svh,700px);transform:translate(-50%,-50%) scale(.965);opacity:0;background:var(--paper);border:1px solid var(--line-2);border-radius:6px;overflow:hidden;box-shadow:0 60px 140px -50px rgba(20,14,6,.82);transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.dossier .panel{position:absolute;top:50%;left:50%;width:min(960px,calc(100% - 40px));aspect-ratio:2/1;max-height:90svh;transform:translate(-50%,-50%) scale(.965);opacity:0;background:var(--paper);border:1px solid var(--line-2);border-radius:6px;overflow:hidden;box-shadow:0 60px 140px -50px rgba(20,14,6,.82);transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
 .dossier.in .panel{transform:translate(-50%,-50%) scale(1);opacity:1}
-.dossier .pin{display:grid;grid-template-columns:53% 1fr;height:100%;max-height:none}
-.dossier .dmedal{position:relative;background:radial-gradient(44% 40% at 50% 44%,rgba(201,168,106,.13),transparent 68%),radial-gradient(circle at 50% 40%,#241d12,#120e08 78%);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);overflow:hidden}
+.dossier .pin{display:flex;width:100%;height:100%}
+.dossier .dmedal{position:relative;flex:0 0 50%;background:radial-gradient(44% 40% at 50% 44%,rgba(201,168,106,.13),transparent 68%),radial-gradient(circle at 50% 40%,#241d12,#120e08 78%);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);overflow:hidden}
 .dossier .dmedal canvas{width:min(86%,540px);height:auto;aspect-ratio:1;opacity:0;transform:scale(.92);transition:opacity .7s ease .15s,transform .85s cubic-bezier(.2,.7,.3,1) .15s}
 .dossier.in .dmedal canvas{opacity:1;transform:scale(1)}
-.dossier .dphoto{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.045);transition:opacity .8s ease .1s,transform 1.4s cubic-bezier(.2,.7,.3,1) .1s}
+.dossier .dphoto{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:0;transform:scale(1.045);transition:opacity .8s ease .1s,transform 1.4s cubic-bezier(.2,.7,.3,1) .1s}
 .dossier.in .dphoto{opacity:1;transform:scale(1)}
 .dossier .dmedal .shade{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(to top,rgba(9,6,3,.5),transparent 20%)}
 .dossier .dtoggle{position:absolute;top:20px;left:20px;z-index:4;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(16,11,6,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(201,168,106,.28);opacity:0;transition:opacity .5s ease .45s}
@@ -217,7 +219,7 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .dossier.in .bezel circle{stroke-dashoffset:0}
 .dossier .ringtxt{position:absolute;bottom:clamp(22px,4.5vh,46px);left:0;right:0;text-align:center;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:#d7c7a3;opacity:0;text-shadow:0 1px 12px rgba(0,0,0,.85);transition:opacity .6s ease .6s;z-index:4}
 .dossier.in .ringtxt{opacity:.8}
-.dossier .dbody{display:flex;flex-direction:column;justify-content:safe center;padding:clamp(28px,3.2vw,52px);overflow:auto}
+.dossier .dbody{flex:1 1 50%;min-width:0;min-height:0;display:flex;flex-direction:column;justify-content:safe center;padding:clamp(26px,3vw,48px);overflow-y:auto}
 .dossier .dbody>*{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
 .dossier.in .dbody>*{opacity:1;transform:none}
 .dossier.in .dbody>*:nth-child(1){transition-delay:.26s}
@@ -229,24 +231,24 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .dossier.in .dbody>*:nth-child(7){transition-delay:.68s}
 .dossier.in .dbody>*:nth-child(8){transition-delay:.75s}
 .dossier .dmaison{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
-.dossier .dnick{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:1.2rem;margin-top:14px}
-.dossier h3{font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.0;margin-top:4px}
-.dossier .dref{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:14px}
-.dossier .ddesc{color:var(--ink-80);margin-top:20px;font-weight:300;font-size:1.05rem;line-height:1.6;max-width:48ch}
-.dossier .dspecs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.dossier .dnick{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:1.15rem;margin-top:10px}
+.dossier h3{font-size:clamp(1.9rem,2.9vw,2.6rem);line-height:1.02;margin-top:4px}
+.dossier .dref{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.dossier .ddesc{color:var(--ink-80);margin-top:14px;font-weight:300;font-size:1rem;line-height:1.5;max-width:48ch}
+.dossier .dspecs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .dossier .dspecs li{list-style:none;font-size:.68rem;letter-spacing:.04em;border:1px solid var(--line);background:var(--paper-2);border-radius:3px;padding:6px 11px}
-.dossier .dnote{font-size:.78rem;font-style:italic;color:var(--muted);margin-top:16px}
-.dossier .dprice{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.dossier .dnote{font-size:.78rem;font-style:italic;color:var(--muted);margin-top:10px}
+.dossier .dprice{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .dossier .dprice .k{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 .dossier .dprice .v{font-family:var(--serif);font-size:1.7rem;margin-top:4px}
-.dossier .ask{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:14px 24px;border-radius:999px;border:0;cursor:pointer;transition:background .35s}
+.dossier .ask{appearance:none;font-family:var(--sans);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:14px 24px;border-radius:999px;border:0;cursor:pointer;transition:background .35s}
 .dossier .ask:hover{background:var(--gold)}
 .dossier .close{position:absolute;top:14px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--paper-2);cursor:pointer;color:var(--ink);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
 .dossier .close:hover{background:var(--ink);color:var(--paper);transform:rotate(90deg)}
 @media (max-width:600px){
-  .dossier .panel{width:calc(100% - 24px);height:min(88svh,780px)}
+  .dossier .panel{width:calc(100% - 24px);aspect-ratio:auto;height:min(90svh,800px)}
   .dossier .pin{display:flex;flex-direction:column;grid-template-columns:none;height:100%;max-height:none;overflow:hidden}
-  .dossier .dmedal{flex:0 0 46%;min-height:210px;border-right:0;border-bottom:1px solid var(--line)}
+  .dossier .dmedal{flex:0 0 auto;width:100%;aspect-ratio:1/1;border-right:0;border-bottom:1px solid var(--line)}
   .dossier .dmedal canvas{width:min(80%,34vh)}
   .dossier .bezel{width:min(86%,36vh);height:min(86%,36vh)}
   .dossier .ringtxt{bottom:10px}
@@ -276,7 +278,10 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .cItem .v{font-family:var(--serif);font-size:1.4rem;color:var(--paper);margin-top:7px;display:block}
 .closing .iglink{display:block;width:fit-content;margin-top:7px;color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(240,232,216,.32);padding-bottom:2px;transition:color .3s,border-color .3s}
 .closing .iglink:hover{color:var(--gold-2);border-color:var(--gold-2)}
-.closing .igcta{display:inline-flex;align-items:center;gap:11px;margin-top:38px;font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold-2);padding:17px 28px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
+.closing .soon{display:flex;width:fit-content;align-items:center;gap:10px;margin-top:34px;font-family:var(--sans);font-weight:500;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2)}
+.closing .soon .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-2)}
+.js .closing .soon .dot{animation:pulse 2.4s ease-out infinite}
+.closing .igcta{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:11px;margin-top:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold-2);padding:17px 30px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
 .closing .igcta:hover{background:#d8b878;transform:translateY(-2px)}
 .closing .igcta svg{flex:none}
 .cBar{display:flex;justify-content:space-between;gap:30px 48px;flex-wrap:wrap;margin-top:clamp(60px,10vw,110px);padding-top:30px;border-top:1px solid rgba(240,232,216,.14)}
@@ -305,13 +310,55 @@ footer{border-top:1px solid var(--line);padding-block:48px}
   .steps{grid-template-columns:1fr}
   .maisonHead{flex-direction:column;align-items:flex-start;gap:8px}
   .closing .igcta{width:100%;justify-content:center}
+  .ftab{min-height:44px;padding:12px 18px}
+  .nav .cta{min-height:44px;display:inline-flex;align-items:center;padding:12px 20px}
+  .beyond .bcta{min-height:48px}
+  .pbody{padding:18px 18px 20px}
+  .pbody .pmaison{font-size:.6rem}
+  .step p,.term p,.mani p{font-size:1rem}
 }
-@media(max-width:540px){ .grid{grid-template-columns:1fr} }
+@media(max-width:600px){ .grid{grid-template-columns:1fr} .selTop{align-items:flex-start} }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .reveal{opacity:1!important;transform:none!important}
   .hero .cueScroll .ln::after,.nocturne .live .dot{animation:none}
   .dossier .dmedal canvas,.dossier .dbody>*,.dossier .bezel circle,.dossier .ringtxt{transition:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}
+  .fmodal .fpanel,.fmodal .fscrim{transition:none!important}
+}
+
+/* ---------- FORMULAIRE (popup) ---------- */
+.fmodal{position:fixed;top:0;bottom:0;left:0;width:100vw;z-index:70;display:none}
+.fmodal .fscrim{position:absolute;inset:0;background:rgba(28,22,13,.5);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;transition:opacity .45s}
+.fmodal.in .fscrim{opacity:1}
+.fmodal .fpanel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.965);opacity:0;width:min(520px,calc(100% - 32px));max-height:92svh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--paper);border:1px solid var(--line-2);border-radius:6px;box-shadow:0 60px 140px -50px rgba(20,14,6,.82);padding:clamp(26px,4vw,42px);transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.fmodal.in .fpanel{transform:translate(-50%,-50%) scale(1);opacity:1}
+.fmodal .fclose{position:absolute;top:12px;right:12px;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:var(--paper-2);cursor:pointer;color:var(--ink);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
+.fmodal .fclose:hover{background:var(--ink);color:var(--paper);transform:rotate(90deg)}
+.fmodal .fhead{padding-right:40px}
+.fmodal .fhead .eyebrow{display:block;margin-bottom:12px}
+.fmodal .fhead h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.05}
+.fmodal .fsub{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:1.05rem;line-height:1.4;margin-top:12px}
+.fmodal form{margin-top:24px}
+.fmodal .frow{display:grid;grid-template-columns:1fr 1fr;gap:4px 22px}
+.fmodal .ffield{margin-top:18px;min-width:0}
+.fmodal label{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.fmodal .req{color:var(--gold)}
+.fmodal input,.fmodal textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-2);color:var(--ink);font-family:var(--serif);font-size:1.15rem;padding:10px 2px;transition:border-color .35s;border-radius:0}
+.fmodal input::placeholder,.fmodal textarea::placeholder{color:#a79c88;font-style:italic}
+.fmodal input:focus,.fmodal textarea:focus{outline:none;border-color:var(--gold)}
+.fmodal input.err,.fmodal textarea.err{border-color:#a8502f}
+.fmodal textarea{resize:none;line-height:1.5;font-size:1rem;min-height:54px}
+.fmodal .fsubmit{appearance:none;cursor:pointer;border:0;width:100%;margin-top:28px;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:18px 28px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
+.fmodal .fsubmit:hover{background:var(--gold);transform:translateY(-2px)}
+.fmodal .fpledge{font-size:.72rem;line-height:1.6;color:var(--muted);margin-top:18px;text-align:center}
+.fmodal .fdone{text-align:center;padding:14px 0}
+.fmodal .fcheck{width:60px;height:60px;border-radius:50%;border:1px solid var(--gold-2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:26px;margin:4px auto 22px}
+.fmodal .fdone h3{font-family:var(--serif);font-weight:500;font-size:1.9rem}
+.fmodal .fdone p{color:var(--ink-80);margin-top:14px;font-weight:300;max-width:34ch;margin-inline:auto}
+.fmodal .fdone .fsubmit{width:auto;margin-top:28px;padding:15px 36px;display:inline-flex;align-items:center}
+@media(max-width:540px){
+  .fmodal .fpanel{width:calc(100% - 20px);padding:42px 20px 24px}
+  .fmodal .frow{grid-template-columns:1fr;gap:0}
 }
 </style>
 
@@ -321,7 +368,7 @@ footer{border-top:1px solid var(--line);padding-block:48px}
     <div class="links">
       <a href="#selection">La Sélection</a>
       <a href="#methode">La Méthode</a>
-      <a href="#contact" class="cta">Écrivez-nous</a>
+      <a href="#contact" class="cta" data-form-open>Écrivez-nous</a>
     </div>
   </div>
 </nav>
@@ -373,7 +420,7 @@ footer{border-top:1px solid var(--line);padding-block:48px}
       <span class="eyebrow gold">Au-delà de cette sélection</span>
       <p class="bline">Les pièces les plus exclusives<br><span class="serif-it">ne s'affichent pas.</span></p>
       <p class="btext">Toute autre référence ou pièce rare se source sur demande. Prix et disponibilité en privé.</p>
-      <a href="#contact" class="bcta">Formuler une demande<span class="arw"></span></a>
+      <a href="#contact" class="bcta" data-form-open>Formuler une demande<span class="arw"></span></a>
     </div>
   </div>
 </section>
@@ -414,13 +461,14 @@ footer{border-top:1px solid var(--line);padding-block:48px}
   <div class="wrap">
     <div class="cHead reveal">
       <span class="eyebrow">Une pièce en tête ?</span>
-      <h2>Écrivez-nous<br><span class="it">en message privé.</span></h2>
+      <h2>Écrivez-nous<br><span class="it">votre demande.</span></h2>
       <p class="clede">Dites-nous le modèle recherché. Nous revenons avec la disponibilité et le prix.</p>
+      <div class="soon"><span class="dot"></span>Bientôt disponible</div>
+      <button type="button" class="igcta" data-form-open>Formuler une demande</button>
       <div class="cCoords">
-        <div class="cItem"><span class="k">Message privé</span><a class="v iglink" href="https://instagram.com/nael_elior" target="_blank" rel="noopener">@nael_elior</a></div>
         <div class="cItem"><span class="k">Par présentation</span><span class="v">Via votre intermédiaire</span></div>
+        <div class="cItem"><span class="k">Remise</span><span class="v">En main propre ou livrée</span></div>
       </div>
-      <a class="igcta" href="https://instagram.com/nael_elior" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>Écrire sur Instagram</a>
     </div>
     <div class="cBar">
       <div class="wm">Pavillon Guilloché<span>Paris · Courtage horloger</span></div>
@@ -453,9 +501,42 @@ footer{border-top:1px solid var(--line);padding-block:48px}
         <p class="dnote" id="dNote"></p>
         <div class="dprice">
           <div><div class="k">Disponibilité &amp; prix</div><div class="v">Sur demande</div></div>
-          <a href="#contact" class="ask" data-close>Demander cette pièce</a>
+          <button type="button" class="ask" id="dAsk">Demander cette pièce</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="fmodal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="fmTitle">
+  <div class="fscrim" data-fclose></div>
+  <div class="fpanel">
+    <button class="fclose" data-fclose aria-label="Fermer">✕</button>
+    <div class="fhead">
+      <span class="eyebrow">Demande privée</span>
+      <h3 id="fmTitle">Dites-nous la pièce.</h3>
+      <p class="fsub">Quelques informations, et nous revenons avec la disponibilité et le prix.</p>
+    </div>
+    <form id="demandeForm" novalidate>
+      <div class="frow">
+        <div class="ffield"><label for="fPrenom">Prénom <span class="req">*</span></label><input id="fPrenom" name="prenom" type="text" autocomplete="given-name" placeholder="Votre prénom"></div>
+        <div class="ffield"><label for="fNom">Nom <span class="req">*</span></label><input id="fNom" name="nom" type="text" autocomplete="family-name" placeholder="Votre nom"></div>
+      </div>
+      <div class="frow">
+        <div class="ffield"><label for="fEmail">Email <span class="req">*</span></label><input id="fEmail" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com"></div>
+        <div class="ffield"><label for="fTel">Téléphone</label><input id="fTel" name="telephone" type="tel" autocomplete="tel" placeholder="Facultatif"></div>
+      </div>
+      <div class="ffield"><label for="fModele">Marque et modèle recherchés <span class="req">*</span></label><input id="fModele" name="modele" type="text" placeholder="Ex. Rolex Daytona 126500LN, cadran blanc"></div>
+      <div class="ffield"><label for="fBudget">Budget en euros (chiffres uniquement)</label><input id="fBudget" name="budget" type="text" inputmode="numeric" placeholder="25000"></div>
+      <div class="ffield"><label for="fNotes">Précisions</label><textarea id="fNotes" name="precisions" rows="2" placeholder="Millésime, état, full set, délai souhaité..."></textarea></div>
+      <button type="submit" class="fsubmit">Envoyer ma demande</button>
+      <p class="fpledge">Vos informations ne servent qu'à traiter votre demande. Aucune revente, aucune diffusion.</p>
+    </form>
+    <div class="fdone" hidden>
+      <div class="fcheck" aria-hidden="true">✓</div>
+      <h3>Demande bien reçue.</h3>
+      <p>Merci. Nous revenons vers vous très vite avec la disponibilité et le prix.</p>
+      <button type="button" class="fsubmit fdone-close" data-fclose>Fermer</button>
     </div>
   </div>
 </div>
@@ -730,6 +811,54 @@ function closeDossier(){
 dossier.addEventListener('click',e=>{if(e.target.hasAttribute('data-close'))closeDossier();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dossier.classList.contains('open'))closeDossier();});
 document.getElementById('dToggle').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setDossierView(b.dataset.view);});
+
+/* ---------- FORMULAIRE (popup) ---------- */
+const fmodal=document.getElementById('formModal');
+const demandeForm=document.getElementById('demandeForm');
+let fLastFocus=null;
+function openForm(prefillModel){
+  fLastFocus=document.activeElement;
+  const done=fmodal.querySelector('.fdone'); if(done)done.hidden=true;
+  if(demandeForm)demandeForm.style.display='';
+  if(prefillModel){const m=document.getElementById('fModele'); if(m)m.value=prefillModel;}
+  fmodal.style.display='block';
+  requestAnimationFrame(()=>fmodal.classList.add('in'));
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{const f=document.getElementById('fPrenom'); if(f&&window.matchMedia('(min-width:700px)').matches)f.focus();},140);
+}
+function closeForm(){
+  fmodal.classList.remove('in');
+  setTimeout(()=>{fmodal.style.display='none';document.body.style.overflow='';},REDUCED?0:380);
+  if(fLastFocus)fLastFocus.focus();
+}
+fmodal.addEventListener('click',e=>{if(e.target.hasAttribute('data-fclose'))closeForm();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fmodal.classList.contains('in'))closeForm();});
+const fBudget=document.getElementById('fBudget');
+if(fBudget)fBudget.addEventListener('input',()=>{fBudget.value=fBudget.value.replace(/[^0-9]/g,'');});
+if(demandeForm)demandeForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  let ok=true;
+  [['fPrenom',0],['fNom',0],['fEmail',1],['fModele',0]].forEach(([id,isMail])=>{
+    const el=document.getElementById(id); if(!el)return;
+    const v=el.value.trim();
+    const bad=!v||(isMail&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
+    el.classList.toggle('err',bad); if(bad)ok=false;
+  });
+  if(!ok){const first=demandeForm.querySelector('.err'); if(first)first.focus(); return;}
+  /* Envoi a brancher sur l'email de reception (service type Web3Forms/Formspree). */
+  demandeForm.style.display='none';
+  const done=fmodal.querySelector('.fdone'); if(done)done.hidden=false;
+  const panel=fmodal.querySelector('.fpanel'); if(panel)panel.scrollTop=0;
+});
+demandeForm&&demandeForm.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>el.classList.remove('err')));
+document.querySelectorAll('[data-form-open]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openForm();}));
+const dAsk=document.getElementById('dAsk');
+if(dAsk)dAsk.addEventListener('click',()=>{
+  const p=dCurrent.p;
+  const model=p?((p.maison?p.maison+' ':'')+p.t):'';
+  closeDossier();
+  setTimeout(()=>openForm(model),REDUCED?0:420);
+});
 
 /* ---------- NOCTURNE DIAL + VISIBILITÉ ---------- */
 let nocturneDial=null, nocturneVis=false, heroDial=null;
