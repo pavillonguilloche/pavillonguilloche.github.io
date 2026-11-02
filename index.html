@@ -72,7 +72,7 @@ section{scroll-margin-top:80px}
 /* ---- cover nocturne : cadran distinct en fond, contraste franc, epure ---- */
 .hero{background:radial-gradient(60% 56% at 50% 43%,#251e13,#140f08 64%,#0E0A05);color:#F3EEE3}
 .hero #heroCanvas{display:none}
-.hero #heroDial{position:absolute;top:49%;left:50%;transform:translate(-50%,-50%);width:min(94vh,880px);height:min(94vh,880px);opacity:.92;pointer-events:none}
+.hero #heroDial{position:absolute;top:49%;left:50%;transform:translate(-50%,-50%);width:min(94vh,100vw,880px);height:min(94vh,100vw,880px);opacity:.92;pointer-events:none}
 .hero .halo{background:radial-gradient(47% 43% at 50% 47%,rgba(13,9,4,.92),rgba(13,9,4,.48) 34%,rgba(13,9,4,0) 63%)}
 .hero .wordmark{color:#F7F2E7;text-shadow:0 1px 2px rgba(8,5,2,.88),0 0 16px rgba(8,5,2,.74),0 0 34px rgba(8,5,2,.5)}
 .hero .wordmark .sub{color:#C3B795}
@@ -278,10 +278,8 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .cItem .v{font-family:var(--serif);font-size:1.4rem;color:var(--paper);margin-top:7px;display:block}
 .closing .iglink{display:block;width:fit-content;margin-top:7px;color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(240,232,216,.32);padding-bottom:2px;transition:color .3s,border-color .3s}
 .closing .iglink:hover{color:var(--gold-2);border-color:var(--gold-2)}
-.closing .soon{display:flex;width:fit-content;align-items:center;gap:10px;margin-top:34px;font-family:var(--sans);font-weight:500;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2)}
-.closing .soon .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-2)}
-.js .closing .soon .dot{animation:pulse 2.4s ease-out infinite}
-.closing .igcta{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:11px;margin-top:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold-2);padding:17px 30px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
+.closing .igcta{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:11px;margin-top:34px;font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold-2);padding:17px 30px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
+.closing .calt{font-family:var(--serif);font-style:italic;font-size:1.05rem;line-height:1.5;color:#c9bda6;margin-top:22px;max-width:46ch}
 .closing .igcta:hover{background:#d8b878;transform:translateY(-2px)}
 .closing .igcta svg{flex:none}
 .cBar{display:flex;justify-content:space-between;gap:30px 48px;flex-wrap:wrap;margin-top:clamp(60px,10vw,110px);padding-top:30px;border-top:1px solid rgba(240,232,216,.14)}
@@ -343,9 +341,11 @@ footer{border-top:1px solid var(--line);padding-block:48px}
 .fmodal .ffield{margin-top:18px;min-width:0}
 .fmodal label{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .fmodal .req{color:var(--gold)}
-.fmodal input,.fmodal textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-2);color:var(--ink);font-family:var(--serif);font-size:1.15rem;padding:10px 2px;transition:border-color .35s;border-radius:0}
+.fmodal input,.fmodal textarea,.fmodal select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-2);color:var(--ink);font-family:var(--serif);font-size:1.15rem;padding:10px 2px;transition:border-color .35s;border-radius:0}
+.fmodal select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:22px;background-image:linear-gradient(45deg,transparent 50%,#a79c88 50%),linear-gradient(135deg,#a79c88 50%,transparent 50%);background-position:calc(100% - 11px) 21px,calc(100% - 6px) 21px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fmodal select option{color:var(--ink);background:var(--paper)}
 .fmodal input::placeholder,.fmodal textarea::placeholder{color:#a79c88;font-style:italic}
-.fmodal input:focus,.fmodal textarea:focus{outline:none;border-color:var(--gold)}
+.fmodal input:focus,.fmodal textarea:focus,.fmodal select:focus{outline:none;border-color:var(--gold)}
 .fmodal input.err,.fmodal textarea.err{border-color:#a8502f}
 .fmodal textarea{resize:none;line-height:1.5;font-size:1rem;min-height:54px}
 .fmodal .fsubmit{appearance:none;cursor:pointer;border:0;width:100%;margin-top:28px;font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:18px 28px;border-radius:999px;min-height:54px;transition:background .35s,transform .35s}
@@ -463,11 +463,11 @@ footer{border-top:1px solid var(--line);padding-block:48px}
       <span class="eyebrow">Une pièce en tête ?</span>
       <h2>Écrivez-nous<br><span class="it">votre demande.</span></h2>
       <p class="clede">Dites-nous le modèle recherché. Nous revenons avec la disponibilité et le prix.</p>
-      <div class="soon"><span class="dot"></span>Bientôt disponible</div>
       <button type="button" class="igcta" data-form-open>Formuler une demande</button>
+      <p class="calt">Vous pouvez aussi passer par un intermédiaire de notre réseau : il transmet votre demande en votre nom.</p>
       <div class="cCoords">
-        <div class="cItem"><span class="k">Par présentation</span><span class="v">Via votre intermédiaire</span></div>
-        <div class="cItem"><span class="k">Remise</span><span class="v">En main propre ou livrée</span></div>
+        <div class="cItem"><span class="k">Remise</span><span class="v">En main propre, à Paris</span></div>
+        <div class="cItem"><span class="k">Règlement</span><span class="v">Acompte, puis solde</span></div>
       </div>
     </div>
     <div class="cBar">
@@ -526,8 +526,15 @@ footer{border-top:1px solid var(--line);padding-block:48px}
         <div class="ffield"><label for="fEmail">Email <span class="req">*</span></label><input id="fEmail" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com"></div>
         <div class="ffield"><label for="fTel">Téléphone</label><input id="fTel" name="telephone" type="tel" autocomplete="tel" placeholder="Facultatif"></div>
       </div>
-      <div class="ffield"><label for="fModele">Marque et modèle recherchés <span class="req">*</span></label><input id="fModele" name="modele" type="text" placeholder="Ex. Rolex Daytona 126500LN, cadran blanc"></div>
-      <div class="ffield"><label for="fBudget">Budget en euros (chiffres uniquement)</label><input id="fBudget" name="budget" type="text" inputmode="numeric" placeholder="25000"></div>
+      <div class="ffield"><label for="fModele">Marque et modèle recherchés <span class="req">*</span></label><input id="fModele" name="modele" type="text" placeholder="Ex. Rolex Cosmograph Daytona"></div>
+      <div class="frow">
+        <div class="ffield"><label for="fRef">Référence</label><input id="fRef" name="reference" type="text" placeholder="Ex. 126500LN"></div>
+        <div class="ffield"><label for="fBudget">Budget en euros</label><input id="fBudget" name="budget" type="text" inputmode="numeric" placeholder="25000"></div>
+      </div>
+      <div class="frow">
+        <div class="ffield"><label for="fSource">Comment nous avez-vous connu ?</label><select id="fSource" name="source"><option value="">Choisir</option><option>Intermédiaire</option><option>Bouche-à-oreille / réseau</option><option>Plateforme</option><option>Recherche en ligne</option><option>Autre</option></select></div>
+        <div class="ffield"><label for="fReferent">Nom (intermédiaire, plateforme)</label><input id="fReferent" name="referent" type="text" placeholder="Si recommandé"></div>
+      </div>
       <div class="ffield"><label for="fNotes">Précisions</label><textarea id="fNotes" name="precisions" rows="2" placeholder="Millésime, état, full set, délai souhaité..."></textarea></div>
       <button type="submit" class="fsubmit">Envoyer ma demande</button>
       <p class="fpledge">Vos informations ne servent qu'à traiter votre demande. Aucune revente, aucune diffusion.</p>
@@ -816,11 +823,12 @@ document.getElementById('dToggle').addEventListener('click',e=>{const b=e.target
 const fmodal=document.getElementById('formModal');
 const demandeForm=document.getElementById('demandeForm');
 let fLastFocus=null;
-function openForm(prefillModel){
+function openForm(prefillModel, prefillRef){
   fLastFocus=document.activeElement;
   const done=fmodal.querySelector('.fdone'); if(done)done.hidden=true;
   if(demandeForm)demandeForm.style.display='';
-  if(prefillModel){const m=document.getElementById('fModele'); if(m)m.value=prefillModel;}
+  const mEl=document.getElementById('fModele'); if(mEl)mEl.value=prefillModel||'';
+  const rEl=document.getElementById('fRef'); if(rEl)rEl.value=prefillRef||'';
   fmodal.style.display='block';
   requestAnimationFrame(()=>fmodal.classList.add('in'));
   document.body.style.overflow='hidden';
@@ -849,6 +857,7 @@ if(demandeForm)demandeForm.addEventListener('submit',e=>{
   demandeForm.style.display='none';
   const done=fmodal.querySelector('.fdone'); if(done)done.hidden=false;
   const panel=fmodal.querySelector('.fpanel'); if(panel)panel.scrollTop=0;
+  demandeForm.reset();
 });
 demandeForm&&demandeForm.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>el.classList.remove('err')));
 document.querySelectorAll('[data-form-open]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openForm();}));
@@ -856,8 +865,10 @@ const dAsk=document.getElementById('dAsk');
 if(dAsk)dAsk.addEventListener('click',()=>{
   const p=dCurrent.p;
   const model=p?((p.maison?p.maison+' ':'')+p.t):'';
+  const refRaw=p&&p.ref?p.ref:'';
+  const ref=/^réf\.?\s*/i.test(refRaw)?refRaw.replace(/^réf\.?\s*/i,''):'';
   closeDossier();
-  setTimeout(()=>openForm(model),REDUCED?0:420);
+  setTimeout(()=>openForm(model,ref),REDUCED?0:420);
 });
 
 /* ---------- NOCTURNE DIAL + VISIBILITÉ ---------- */
